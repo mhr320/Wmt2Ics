@@ -64,14 +64,14 @@ to overwrite the file.
 
 #### Special Note 2:
 kwargs in setup_config have defaults set:
-	* send='smtp.gmail.com'
-	* port='587'
-	* send_pwd = ''
+* send='smtp.gmail.com'
+* port='587'
+* send_pwd = ''
 If you do not include these in the setup_config(\*\*kwargs) and only include 
 ```python
 config.setup_config(send='', dest='')
 ```
-The library will set send to 'smtp.gmail.com' and port '587' which are gmail settings
+The library will set send='smtp.gmail.com' and port='587' which are gmail settings
 If you leave send_pwd blank, the library will search for an env variable on your local system named GMAIL_APP_PWD. If you know how to set a persistant env variable on your local machine, this may save you some typing and be slightly more secure. Otherwise, worry not and set send_pwd = 'yourpassword' 
 
 **'smtp.gmail.com'**
