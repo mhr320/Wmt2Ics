@@ -1,0 +1,25 @@
+﻿@media print
+{  
+  .noprint 
+	{
+	 display:none;
+	}
+}	
+  
+td.paddedTopBottom 
+{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.errorMessage 
+{
+	color:#FF0000;
+}
+
+.lightGray
+{
+	background-color:#C0C0C0;
+}
+
+

@@ -1,0 +1,448 @@
+<!-- mySchedule.asp -->
+<!--'Sri - begin CC#ROSDB00015214 08/06/2010 Checking the spliting the OD workcodes for D shift -->
+<!--'Sri - end CC#ROSDB00015214 08/06/2010 Checking the spliting the OD workcodes for D shift -->
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<link href="pay_period_24_deID_files/template_css.css" rel="stylesheet" type="text/css">
+<link href="pay_period_24_deID_files/content.css" rel="stylesheet" type="text/css">
+
+ <!-- WS-901/WS-914-->
+ 
+
+ <!-- jquery library files-->
+    <script src="pay_period_24_deID_files/jquery-1.js" type="text/javascript" "=""></script>
+    <script src="pay_period_24_deID_files/jquery-ui.js" type="text/javascript" "=""></script>
+    <link rel="stylesheet" href="pay_period_24_deID_files/jquery-ui.css">
+
+   <!-- jquery confirmation dialog common files-->
+   <script type="text/javascript" src="pay_period_24_deID_files/Confirm_Msg_JQuery.js"></script>
+   <link rel="stylesheet" href="pay_period_24_deID_files/Confirm_Msg_JQuery.css">
+
+<!--WS-1268/WS-1303: add conditional comment to load JQuery UI 1.8.2 for IE8 and IE9...ydd 08/25/15 -->
+<!--[if lt IE 10]>
+    <link rel="stylesheet" href="/WMTScheduler/Core/Style/jquery-ui-1.8.2.css" />    
+    <link rel="stylesheet" href="/WMTScheduler/Core/Style/Confirm_Msg_JQuery_ie8.css" />
+    <script src="/WMTScheduler/Scripts/jquery-1.4.2.js" type="text/javascript""></script>
+    <script src="/WMTScheduler/Scripts/jquery-ui-1.8.2.js" type="text/javascript""></script>
+    <script type="text/javascript" src="/WMTScheduler/Scripts/Confirm_Msg_JQuery_ie8.js"></script>
+<![endif]-->
+
+  
+</head>
+<body>
+<a name="up" id="up"></a><div>
+  <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody><tr>
+    <td><img src="pay_period_24_deID_files/space.gif" width="1" height="1"></td>
+  </tr>
+	<tr>
+      <td><div class="background">
+        <table class="noprint" width="100%" cellspacing="0" cellpadding="0" border="0" background="pay_period_24_deID_files/center.jpg">
+          <tbody><tr>
+            <td width="26"><img src="pay_period_24_deID_files/left.jpg" width="26" height="129"></td>
+            <td>
+             <table width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tbody><tr>
+                <td colspan="2" class="title" style="padding-top:14px;" height="100"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tbody><tr>
+                      <td class="title" style="padding-left:10px;" width="100%">WMT Scheduler 1.0 - ZXX</td>
+                      <td class="footer" style="padding-right:10px;" nowrap="nowrap">
+					  Welcome: XXXXXXX XXXXXXX</td>
+                  </tr>
+                </tbody></table></td>
+              </tr>
+              <tr>
+              <!-- ydd 08/25/16: WS 810/WS-1366: take out extranious cell-->
+               <!-- <td width="10" height="29"></td>-->
+                <td class="mainlevel-nav" width="100%" valign="bottom" height="29">
+				<link rel="stylesheet" type="text/css" href="pay_period_24_deID_files/chromestyle9.css">
+<script type="text/javascript" src="pay_period_24_deID_files/chrome.js">
+</script>
+<div class="chromestyle" id="chromemenu">
+
+
+<div class="chromestyle" id="chromemenu">
+<ul>
+  <!--dtrieu begin - CC#8161  -->
+    <!--<li><a href="Index.asp?Action=dspworksheet">Home</a></li>-->
+    <li><a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspworksheet&amp;home=1">Home</a></li>
+  <!--dtrieu end - CC#8161  -->
+
+
+  <li><a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=commLogout">Logout</a></li>
+
+  <li><a href="#" rel="dropmenu1">Schedules</a></li>
+
+  <li><a href="#" rel="dropmenu2">Requests</a></li>
+
+
+  <li><a href="#" rel="dropmenu3">Views</a></li>
+
+
+  <li><a href="#" rel="dropmenu4">Reports</a></li>
+
+  <li><a href="#" rel="dropmenu5">Admin</a></li>
+
+
+<!--dtrieu 08/29/2008  ROSDB00007449:Cru-X/ART interface
+  --Disable this menu. Using automatic update to CruArt-->
+
+  <li><a href="#" rel="dropmenu6">ART</a></li>
+
+  <li><a href="#" rel="dropmenu7">Settings</a></li>
+
+  <li><a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprdoSchedulePick">Bidding</a></li>
+
+  <li><a href="#" rel="dropmenu8">Help</a></li>
+
+
+
+</ul>
+
+</div>
+
+<!--1st drop down menu -->
+<div id="dropmenu1" class="dropmenudiv" style="top: 131px; left: 144px; visibility: hidden;">
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspschedEdit">Edit Current</a>
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspschedAddPick">Add New</a>
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspschedEditPick">Edit Non Published</a>
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspschedDeletePick">Delete Non Published</a>
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspschedPubPick">Publish</a>
+<!--Begin-Uncommented by Phani Anupama Yaddanapudi-09/08/2009-Optimizer option under schedules menu-->
+<!--<a href="Index.asp?Action=dspschedOpPick">Optimize!</a>-->
+<!--<!--dtrieu-begin -commented 10/02/2009-->
+
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspschedOpPick">Optimize!</a> 
+
+    <!--dtrieu-end -commented 10/02/2009 -->
+<!--End-Uncommented by Phani Anupama Yaddanapudi-09/08/2009-Optimizer option under schedules menu-->
+</div>
+
+<!--2nd drop down menu -->
+<div id="dropmenu2" class="dropmenudiv" style="width: 224px; top: 131px; left: 225px; visibility: hidden;">
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspLeaveReq">Leave</a>
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspxteReq">Earn Comp/Credit</a>
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspexcusedReq">Excused Absence</a>
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsptrainingReq">Training</a>
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspshiftReq">Shift Change</a>
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspshiftSwapReq">Shift Swap</a>
+<!--'SDavuluri CQ#19121 Begin-->
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspcancelReq">Cancel Leave/Excused Absence</a></div>
+<!--'SDavuluri CQ#19121 End-->
+
+<!--3rd anchor link and menu -->
+<div id="dropmenu3" class="dropmenudiv" style="width: 224px; top: 131px; left: 301px; visibility: hidden;">
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspworksheet">Work Sheet View</a>
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspschedule">Schedule View</a>
+
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspscheduleAsPub">Schedule As Published</a>
+
+
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspleaveCal">Leave Calendar</a>
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspshiftLegend">Shift Legend</a>
+
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=actmySchedule">My Schedule</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspmyLeave">My Leave</a>
+
+<!--Begin-ER#11432- Change Vacation word as Prime Time Leave-Phani Anupama Yaddanapudi 10/01/2009-->
+	<!--<a href="Index.asp?Action=dsprptEmpPrime">My Vacation Leave</a>-->
+	<!--'SDavuluri -begin 10-18-2011 ROSDB00017678 only approved prime time requests-->
+	<!--<a href="Index.asp?Action=dsprptEmpPrime">My Prime Time Leave</a>-->
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptEmpPrime">My Approved Prime Time Leave</a>
+	<!--'SDavuluri -end 10-18-2011 ROSDB00017678 only approved prime time requests-->
+<!--End-ER#11432- Change Vacation word as Prime Time Leave-Phani Anupama Yaddanapudi 10/01/2009-->
+	
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspmyOT">My Overtime</a>
+
+
+</div>
+
+<!--4th (Report) anchor link and menu -->
+<div id="dropmenu4" class="dropmenudiv" style="width: 224px; top: 131px; left: 355px; visibility: hidden;">
+
+<!--Begin-Anu(PY) -08/27/2009-Enhancement10445-Allow only users whose userlevel is >=700(FLM and above) to view Area Phone list report-->
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptAreaPhoneList">Area Phone List</a>
+
+<!--End-Anu(PY) -08/27/2009-Enhancement10445-Allow only users whose userlevel is >=700(FLM and above) to view Area Phone list report-->
+
+<!--dtrieu -begin CC#14263 06/15/2010 - Pending Requests Report-->
+    <!-- dtrieu –begin CC#18766 02/06/2012 – SR221 Leave requests report refresh 
+	    <a href="Index.asp?Action=dsprptPndngRequests">All Pending Requests</a> -->
+	    <a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptPndngRequests&amp;fromMenu=1">All Pending Requests</a>
+	<!-- dtrieu –end CC#18766 02/06/2012 – SR221 Leave requests report refresh -->
+<!--dtrieu -begin CC#14263 06/15/2010 - Pending Requests Report-->
+
+
+
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptAreaNatcaDate">NATCA Seniority</a>
+
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptSupFaaDate">SUP Seniority</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptSupBidDate">SUP Bid Seniority</a>
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptOTCallsPick">Overtime Calls by Day</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptOT">Overtime by Pay Period</a>
+
+    <a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptEmpAvlblOT">Available for Overtime</a>
+
+<!--<a href="Index.asp?Action=dsprptOTFunds">Overtime Funds Available</a>-->
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptOtByWho">Who Assigned Overtime</a>
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptOMSumPick">Daily Summary</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptempSumPick">Employee Leave Summary</a>
+
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptEmpFurloughLeave">Furlough Summary by Date</a>
+
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptSickLeave">Sick Leave by Pay Period</a>
+
+    <!-- WS-462: comment out the sick vs. overtime report -->
+	<!--<a href="Index.asp?Action=dsprptSick_OTPick">Sick Leave vs. Overtime</a>-->
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptCteXte">Comp/Credit Earned</a>
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptLeaveRestriction">Leave Restriction</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptLeave">All Leave by Pay Period</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptFMLA">All FMLA</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptLeaveFmlaPP">FMLA by Pay Period</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptCIC">CIC's</a>
+
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptEmpLeavePick">All Leave by Employee</a>
+<!--Begin-ER#11432- Change Vacation word as Prime Time Leave-Phani Anupama Yaddanapudi 10/01/2009-->	
+	<!--<a href="Index.asp?Action=dsprptEmpPrimePick">Vacation Leave by Employee</a>-->
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptEmpPrimePick">Prime Time Leave by Employee       </a>
+<!--End-ER#11432- Change Vacation word as Prime Time Leave-Phani Anupama Yaddanapudi 10/01/2009-->	
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptRemarksPick">NATCA Official Time</a>
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptUserLevel">User Levels</a>
+    <a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptShiftCountPick">Shift Counts</a>
+
+
+<!--dtrieu -begin 09/15/2008 add cru art status -->
+<!--Anu(PY) -begin 12/05/2008 Allow only users whose userlevel is >=900 to view cru art status report-->
+
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptCruArtPick">CruArt Export Status by Day</a>
+
+<!--Anu(PY) -End 12/05/2008 Allow only users whose userlevel is >=900 to view cru art status report-->
+
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=cruArtReportByPayPeriodPick">CruArt Export Status by PP  </a>
+
+
+<!--dtrieu -begin 09/15/2008 add cru art status -->
+<!--'sdavuluri - CC#19123-->
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dsprptAdminAudit">Auditing Report for Administrator</a>    
+
+<!--'sdavuluri - CC#19123-->
+</div>
+
+<!--5th (Admin) anchor link and menu -->
+<div id="dropmenu5" class="dropmenudiv" style="width: 200px; top: 131px; left: 422px; visibility: hidden;">
+
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspadminAddEmp">Add Employee</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspadminEmpPick">Edit Employee Data</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspadminAreaEdit">Add or Edit Areas</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspadminShiftsEdit">Add or Edit Shifts</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspadminShiftsNumbers">Edit Guideline Numbers</a>
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspadminSetSup">Edit OS/OM Assignment</a>
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspadminOTEditWorked">Edit Overtime Hours</a>
+
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspadminOTReasons">Add or Edit Overtime Remarks</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspadminRemarks">Add Other Duty Remarks</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspadminConfigMenu">Facility Config</a>
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspadminRdoConfig">Setup RDO and AL Bidding</a>
+
+</div>
+
+<!--6th (ART) anchor link and menu -->
+<div id="dropmenu6" class="dropmenudiv" style="width: 200px; top: 131px; left: 481px; visibility: hidden;">
+<!---->
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=dspartDayPick">ART Export by Day</a></div>
+
+<!--7th anchor link and menu -->
+<div id="dropmenu7" class="dropmenudiv" style="width: 200px; top: 131px; left: 526px; visibility: hidden;">
+<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=userChgPhone">Change Phone Number</a></div>
+
+<!--8th anchor link and menu -->
+<div id="dropmenu8" class="dropmenudiv" style="width: 200px;">
+	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=faq">FAQs</a>
+    	<a href="https://wmtscheduler.faa.gov/WMTScheduler/Index.asp?Action=tutorial">Tutorials</a>
+<!--	<a href="/WMTScheduler/Core/docs/cpcuserguide.pdf" target="_Help">CPC User Guide</a>-->
+<!---->
+<!--	<a href="/WMTScheduler/Core/docs/cicuserguide.pdf" target="_Help">CIC User Guide</a>-->
+<!---->
+<!---->
+<!--	<a href="/WMTScheduler/Core/docs/supervisoruserguide.pdf" target="_Help">SUP User Guide</a>-->
+<!---->
+<!---->
+<!--	<a href="/WMTScheduler/Core/docs/omsmuserguide.pdf" target="_Help">OM/SM User Guide</a>-->
+<!---->
+<!---->
+<!--	<a href="/WMTScheduler/Core/docs/administratoruserguide.pdf" target="_Help">Administrator's User Guide</a>-->
+<!---->
+<!--<a href="/WMTScheduler/Core/tutorials/setup.htm" target="_Setup">Setup Tutorial</a>-->
+<!---->
+<!--	<a href="Index.asp?Action=setup">Setup Tutorial</a>-->
+<!---->
+
+
+<!--dtrieu -begin CC#13967 04/29/2010 Display Release Notes in Scheduler application -->
+    <a href="javascript:releasewin=window.open('Index.asp?Action=releasenotes','ReleaseNotes','resizable=no,scrollbars=yes,width=680,height=600');releasewin.focus()">Release Notes</a>
+<!--dtrieu -end CC#13967 04/29/2010 Display Release Notes in Scheduler application -->
+<!-- gheller begin CC#19117 display user access levels in Scheduler application -->
+    <a href="https://wmtscheduler.faa.gov/WMTScheduler/Core/docs/User_Level_Access_in_Scheduler_1.0.pdf" target="_Help">User Level Access</a>
+<!-- gheller begin CC#19117 display user access levels in Scheduler application -->
+	<a href="mailto:helpdesk@faa.gov">Contact us</a>
+</div>
+<script type="text/javascript">
+cssdropdown.startchrome("chromemenu")
+</script>
+				</div></td>
+              </tr>
+            </tbody></table></td>
+            <td width="26"><img src="pay_period_24_deID_files/right.jpg" width="26" height="129"></td>
+          </tr>
+        </tbody></table>
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+          <tbody><tr>
+            <td width="11" height="25" background="pay_period_24_deID_files/shadowl.jpg"><div>
+            </div></td>
+            
+            <!--dtrieu -begin CC#13591 1/11/2010 universal page header across system
+                <td height="25" bgcolor="#F1F1F1" style="border-bottom: 1px solid #999999; border-top: 5px solid #FFFFFF;">			</td> 
+                <td height="25" align="right" bgcolor="#F1F1F1" style="border-bottom: 1px solid #999999; border-top: 5px solid #FFFFFF;"><div class="date">11/13/2020</div></td> -->
+                <td id="areaTD" style="border-bottom: 1px solid #999999; border-top: 5px solid #FFFFFF;" height="25" bgcolor="#F1F1F1" align="left">You are in area:<span id="areaSpan">AREA X</span></td>
+                <td id="dateTD " style="border-bottom: 1px solid #999999; border-top: 5px solid #FFFFFF;" height="25" bgcolor="#F1F1F1" align="right"><div class="date">Today's date: 11/13/2020</div></td>
+            <!--dtrieu -end CC#13591 1/11/2010 universal page header across system -->
+            <td width="11" height="25" background="pay_period_24_deID_files/shadowr.jpg" align="right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+          <tbody><tr>
+            <td style="padding-left:8px; background-repeat: repeat-y;" valign="top" background="pay_period_24_deID_files/shadowl.jpg">&nbsp;</td>
+<td width="100%">
+<!-- End Header -->
+
+
+
+
+<script language="JavaScript" type="text/javascript">
+
+    //ws-362
+    function prePrint(strLoginName) {
+        if (window.print) {
+            var OLECMDID = 7;
+            var PROMPT = 7;
+            var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+
+            originalTitle = document.title;
+            strLoginName = strLoginName.replace("***", "\'");
+            document.title = originalTitle + " - Printed by " + strLoginName;
+            document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
+
+            //By MAU - 07.06.2015 - WS-840/WS-993 - Make IE 11 Compatible - Check the browser name and version.
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
+            msie = parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)));
+
+            if (msie > 0 && msie < 11) {
+                WebBrowser1.ExecWB(OLECMDID, PROMPT, null);
+                WebBrowser1.outerHTML = "";
+            }
+            else {
+                window.print();
+            }
+
+            document.title = originalTitle;
+        }
+        else if (VBS) printIt();
+        else alert('This script does not work in your browser');
+    }
+
+</script>
+
+
+
+
+<div align="right"><a href="javascript:helpwin=window.open('Index.asp?Action=help&amp;hid=60','Help','resizable=no,width=680,height=600');helpwin.focus()"><img src="pay_period_24_deID_files/help.gif" style="border-style: none"></a>
+
+       <p class="noprint" align="right"><input type="button" value="Print" onclick="prePrint('MICHAEL ROBERTS');"><br></p>
+</div>
+<form name="form1" method="post" action="">
+    <p align="center">Select Pay Period:  
+      <select name="selPP" onchange="form1.submit()">
+        
+        
+
+        
+
+        
+
+        
+
+        <option value="242020" selected="selected">242020</option>
+
+        
+
+        
+
+        </select>
+  <a href="javascript:helpwin=window.open('Index.asp?Action=help&amp;hid=6047','Help','resizable=no,width=680,height=600');helpwin.focus()"><img src="pay_period_24_deID_files/help.gif" style="border-style: none"></a>    </p>
+</form>
+
+
+ <div align="center">
+   
+   <p>&nbsp;  </p>
+    <p>
+<br><br><b>Individual schedule for XXXXXXX XXXXXXX:<b><br><br><table cellpadding="6" border="1"><tbody><tr><td align="center">Sunday<br>11/8/2020<br>WX<br></td><td align="center">Monday<br>11/9/2020<br>6<br></td><td align="center">Tuesday<br>11/10/2020<br>WX<br></td><td align="center">Wednesday<br>11/11/2020<br>WX<br></td><td align="center">Thursday<br>11/12/2020<br>X<br></td><td align="center">Friday<br>11/13/2020<br>X<br></td><td align="center">Saturday<br>11/14/2020<br>C14<br></td></tr><tr><td align="center">Sunday<br>11/15/2020<br>14<br></td><td align="center">Monday<br>11/16/2020<br>C14<br></td><td align="center">Tuesday<br>11/17/2020<br>C14<br></td><td align="center">Wednesday<br>11/18/2020<br>C14<br></td><td align="center">Thursday<br>11/19/2020<br>X<br></td><td align="center">Friday<br>11/20/2020<br>X<br></td><td align="center">Saturday<br>11/21/2020<br>WX<br></td></tr></tbody></table>
+      </b></b></p><b><b>
+   </b></b></div><b><b>
+ <br>
+ 
+<!-- End main content area -->
+	</b></b></td>
+            <td style="padding-right: 8px; background-repeat: repeat-y;" valign="top" background="pay_period_24_deID_files/shadowr.jpg">&nbsp;</td>
+          </tr>
+        </tbody></table>
+        <table class="noprint" width="100%" cellspacing="0" cellpadding="0" border="0" background="pay_period_24_deID_files/center2.jpg">
+          <tbody><tr>
+            <td width="26"><img src="pay_period_24_deID_files/left2.jpg" width="26" height="92"></td>
+            <td>
+              <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody><tr>
+                  <td width="30" align="left"><a href="#up"><img src="pay_period_24_deID_files/ltop.jpg" alt="Top!" width="30" height="20" border="0"></a> </td>
+                  <!--dtrieu -begin CC#13967 04/22/2010 Display Release Notes in Scheduler application 
+                  <td align="center"><div class="footer">WMT Scheduler ver 1.0g</div>  -->
+                  <td align="center"><div class="footer">
+                    <a href="javascript:releasewin=window.open('Index.asp?Action=releasenotes','ReleaseNotes','resizable=no,scrollbars=yes,width=680,height=600');releasewin.focus()">WMT Scheduler Version 1.1.24 </a>
+                  </div>
+                  <!--dtrieu -end CC#13967 04/22/2010 Display Release Notes in Scheduler application -->                   </td>
+                  <td width="30" align="right"><a href="#up"><img src="pay_period_24_deID_files/rtop.jpg" alt="Top!" width="30" height="20" border="0"></a></td>
+                </tr>
+            </tbody></table></td>
+            <td width="26"><img src="pay_period_24_deID_files/right2.jpg" width="26" height="92"></td>
+          </tr>
+        </tbody></table>
+      </div></td>
+    </tr>
+  </tbody></table>
+</div>
+
+
+
+<title>My Schedule</title>
+</body></html>

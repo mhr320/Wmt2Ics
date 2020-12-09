@@ -1,0 +1,61 @@
+	.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close
+        {
+			display:none;
+        }
+        
+	.ui-dialog .ui-dialog-titlebar .ui-dialog-title
+        {
+			font-size:14;
+            font-weight:bold;
+            color: white;
+         
+        }
+        
+    .ui-dialog .ui-dialog-titlebar
+        {
+			background-image: url("/WMTScheduler/Core/images/center.jpg");
+			margin-left:0.1em;
+			margin-right:0.1em;
+			width:auto;
+			width:486\9;
+        }
+        
+       
+      
+    .ui-dialog 
+		{
+            font-size:11;
+            font-weight:normal;
+            border-width:medium;
+            border-color:ThreeDLighShadow;
+            
+		}
+        
+    .ui-dialog .ui-dialog-content 
+		{
+            font-size:11;
+            font-weight:normal;
+            /* WS-1268: add height and overflow attribute ...ydd 08/20/15 */
+			height:auto;
+			overflow:hidden;
+        }
+        
+	.ui-dialog  .ui-dialog-buttonpane
+        {
+        	background-color:#F0F0F0;
+        	border-top-color:transparent;
+        	margin-left:0.1em;
+       		margin-right:0.1em;
+        	width:auto;        	 
+        	width: 486\9;
+        }
+       
+	.ui-dialog  .ui-dialog-buttonpane .ui-button  
+        {
+			font-size:12;
+            text-align:center;
+            float:none;
+            color: ButtonText;
+            width:80;
+        }
+        
