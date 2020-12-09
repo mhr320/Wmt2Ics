@@ -45,14 +45,21 @@ wmt(run_method='email') # will now send email with attachment
 ```
 #### Special Note 1:
 * If you omit:
-	 `from wmt2ics.configemail import ConfigEmail as cfg
-	  config = cfg()
-	  config.setup_config(**kwargs)`
-and simply run `wmt(run_method='email')`
+```python
+from wmt2ics.configemail import ConfigEmail as cfg
+config = cfg()
+config.setup_config(**kwargs)
+```
+and simply run 
+```python
+wmt(run_method='email')
+```
 the terminal interface will ask you for smtp,port,send,send_pwd,dest. However there are no checks and no history and no way to change what you entered in the terminal, so you will have to run
-	`from wmt2ics.configemail import ConfigEmail as cfg
-	 config = cfg()
-	 config.setup_config(**kwargs)`
+```python
+from wmt2ics.configemail import ConfigEmail as cfg
+config = cfg()
+config.setup_config(**kwargs)
+```
 to overwrite the file.
 
 #### Special Note 2:
@@ -61,7 +68,9 @@ kwargs in setup_config have defaults set:
 	* port='587'
 	* send_pwd = ''
 If you do not include these in the setup_config(\*\*kwargs) and only include 
-`config.setup_config(send='', dest='')`
+```python
+config.setup_config(send='', dest='')
+```
 The library will set send to 'smtp.gmail.com' and port '587' which are gmail settings
 If you leave send_pwd blank, the library will search for an env variable on your local system named GMAIL_APP_PWD. If you know how to set a persistant env variable on your local machine, this may save you some typing and be slightly more secure. Otherwise, worry not and set send_pwd = 'yourpassword' 
 
