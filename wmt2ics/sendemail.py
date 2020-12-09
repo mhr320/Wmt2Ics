@@ -6,7 +6,10 @@ from email import encoders
 import smtplib
 
 class SendEmail:
-
+	'''Used to send an email with the attached file, great to
+	use if you only have a computer and an iphone, like me. Open
+	in native iOS mail app, click on attachment and add to
+	calendar'''
 	def __init__(self, pay_period, outfile):
 		self.pay_period = pay_period
 		self.outfile = outfile

@@ -2,7 +2,7 @@ import os
 import json
 
 class ConfigEmail:
-
+	'''Used to configure settings for sending email'''
 	def __init__(self):
 		self.basepath = os.path.dirname(__file__)
 		self.config_file = os.path.abspath(os.path.join(self.basepath,"wmtconfig.json"))
@@ -19,6 +19,10 @@ class ConfigEmail:
 			self.ask_config()
 
 	def ask_config(self):
+		'''Terminal Interface for creating data for config file.
+		This will run if you do not run setup_config(). It has no
+		checks or tests, so if you make a mistake, you'll need to 
+		run setup_config()'''
 		self.smtp = input("Enter smtp server -> ")
 		self.port = input("Enter smtp port -> ")
 		self.send = input("Enter sender's email -> ")
@@ -27,6 +31,14 @@ class ConfigEmail:
 		self.write_config()
 
 	def setup_config(self, smtp='smtp.gmail.com', port='587', send='', send_pwd='', dest=''):
+		'''**Kwargs:
+			smtp='smtp.gmail.com' (default)
+			port='587' (default)
+			send='senders email address'
+			send_pwd='p@$$w0rd' (app password for send email account)
+			if you do not set this, it will seek a local env variable GMAIL_APP_PWD
+			dest='senders email address'
+			'''
 		self.smtp = smtp
 		self.port = port
 		self.send = send
@@ -35,6 +47,7 @@ class ConfigEmail:
 		self.write_config()
 
 	def write_config(self):
+		'''writes the wmtconfig.json file'''
 		self.raw_config = {
 		"SMTPSERVER" : self.smtp,
 		"SMTPPORT" : self.port,
