@@ -8,7 +8,7 @@ with open(here / 'README.md', 'r') as f:
 
 setup(
 	name="Wmt2Ics",
-	version="0.0.9", # change before updating
+	version="0.0.9",
 	author="M. Holbert Roberts",
 	author_email="mhr320@gmail.com",
 	description="Converts wmt schedule Views:My Schedule to .ics file",
