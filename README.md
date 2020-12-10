@@ -104,4 +104,8 @@ Where you want it to go!
 
 So all that being said, you'll need to get an app password for an email account or use an account that allows using just your sign in password.
 
-Once you run ConfigEmail().setup_config(**kwargs) once, you can comment it out, it will create a json file, if you ever need to change it, you can re-run this method
+Once you run ConfigEmail().setup_config(\*\*kwargs) once, you can comment it out, it will create a json file, if you ever need to change it, you can re-run this method
+
+## Test Web Page
+
+a test webpage is available to download [Web Test Page](https://github.com/mhr320/wmtTestPage.git)
