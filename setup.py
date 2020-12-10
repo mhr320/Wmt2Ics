@@ -26,5 +26,5 @@ setup(
 		"Operating System :: OS Independent",
 		"Intended Audience :: Developers",
 	],
-	python_requires='>=3', '<4'
+	python_requires='>=3, <4'
 	)
