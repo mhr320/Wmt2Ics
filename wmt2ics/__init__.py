@@ -5,22 +5,27 @@ from icalendar import Calendar, Event
 import os
 import csv
 
+
 class Wmt2Ics:
     '''Converts wmtscheduler.faa.gov Views:My Schedule to ics file'''
-   
+
     def __init__(self, run_method='desktop'):
         self.run_method = run_method
         self.basepath = os.path.dirname(__file__)
-        self.config_file = os.path.abspath(os.path.join(self.basepath,"wmtconfig.json"))
-        self.cats_file = os.path.abspath(os.path.join(self.basepath,"shift_cats.data"))
-        self.save_as = os.path.abspath(os.path.join(self.basepath,"Pay_Period_"))
+        self.config_file = os.path.abspath(os.path.join(self.basepath,
+                                                        "wmtconfig.json"))
+        self.cats_file = os.path.abspath(os.path.join(self.basepath,
+                                                      "shift_cats.data"))
+        self.save_as = os.path.abspath(os.path.join(self.basepath,
+                                                    "Pay_Period_"))
         self.eval_run_method()
 
     def eval_run_method(self):
         '''Determines where file is saved: desktop or attached to email'''
         if self.run_method == "desktop":
             self.desktop = os.path.expanduser("~/Desktop")
-            self.save_as = os.path.abspath(os.path.join(self.desktop,"Pay_Period_"))
+            self.save_as = os.path.abspath(os.path.join(self.desktop,
+                                                        "Pay_Period_"))
             self.obtainData()
             self.buildShiftCats()
             self.addNewCategory()
@@ -35,7 +40,7 @@ class Wmt2Ics:
             self.removeFile()
 
     def obtainData(self):
-        '''Terminal Interface for naming Pay Period and pasting schedule data'''
+        '''Terminal Interface to input Pay Period and schedule data'''
         self.schedule = []
         self.pay_period = input("ENTER PAY PERIOD -> ")
         print("PASTE SCHEDULE")
@@ -50,16 +55,19 @@ class Wmt2Ics:
         '''Assigns shift_cats.data to shift_cats{}'''
         with open(self.cats_file, 'r') as f:
             self.reader = csv.reader(f)
-            self.shift_cats = {row[0]:(row[1], int(row[2]), row[3],) for row in self.reader}
+            self.shift_cats = {row[0]: (row[1], int(row[2]), row[3],)
+                               for row in self.reader}
 
     def addNewCategory(self):
-        '''If shift in pasted schedule does not have an entry in shift_cats{}, add'''
+        '''add new shift, if pasted schedule not in shift_cats{}'''
         for shift in self.shifts:
             if shift not in self.shift_cats:
-                self.time = input(shift + " Not found. Enter Start Time (format: 00:00:00) -> ")
+                self.time = input(shift + " Not found. Enter Start Time\
+                    (format: 00:00:00) -> ")
                 self.length = input("Enter Shift Length in Hours -> ")
                 self.shift_name = input("Display Name for Calendar -> ")
-                self.new_category = [shift, self.time, self.length, self.shift_name]
+                self.new_category = [shift, self.time, self.length,
+                                     self.shift_name]
                 with open(self.cats_file, "a+", newline='') as f:
                     self.csv_writer = csv.writer(f)
                     self.csv_writer.writerow(self.new_category)
@@ -69,13 +77,15 @@ class Wmt2Ics:
     def createCalendar(self):
         '''icalendar method to parse schedule into ics file'''
         self.ical = []
-        self.events =[]
+        self.events = []
         self.outfile = self.save_as+self.pay_period+".ics"
         for i in range(len(self.shifts)):
             if self.shifts[i] in self.shift_cats.keys():
                 self.name = self.shift_cats[self.shifts[i]][2]
-                self.date_time = self.dates[i] + " " + self.shift_cats[self.shifts[i]][0]
-                self.date_time = datetime.strptime(self.date_time, "%m/%d/%Y %H:%M:%S")
+                self.date_time = self.dates[i] + " "
+                + self.shift_cats[self.shifts[i]][0]
+                self.date_time = datetime.strptime(self.date_time,
+                                                   "%m/%d/%Y %H:%M:%S")
                 self.time = self.shift_cats[self.shifts[i]][0]
                 self.hours = self.shift_cats[self.shifts[i]][1]
                 self.ical.append((self.name, self.date_time, self.hours))
@@ -107,6 +117,7 @@ class Wmt2Ics:
     def removeFile(self):
         if os.path.exists(self.outfile):
             os.remove(self.outfile)
+
 
 if __name__ == '__main__':
     Wmt2Ics()
