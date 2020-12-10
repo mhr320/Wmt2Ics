@@ -33,7 +33,8 @@ class ConfigEmail:
         self.dest = input("Enter destination email -> ")
         self.write_config()
 
-    def setup_config(self, smtp='smtp.gmail.com', port='587', send='', send_pwd='', dest=''):
+    def setup_config(self, smtp='smtp.gmail.com', port='587',
+                     send='', send_pwd='', dest=''):
         '''**Kwargs:
         smtp='smtp.gmail.com' (default)
         port='587' (default)
