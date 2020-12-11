@@ -22,10 +22,6 @@ class ConfigEmail:
             self.ask_config()
 
     def ask_config(self):
-        '''Terminal Interface for creating data for config file.
-        This will run if you do not run setup_config(). It has no
-        checks or tests, so if you make a mistake, you'll need to
-        run setup_config()'''
         self.smtp = input("Enter smtp server -> ")
         self.port = input("Enter smtp port -> ")
         self.send = input("Enter sender's email -> ")
@@ -35,14 +31,6 @@ class ConfigEmail:
 
     def setup_config(self, smtp='smtp.gmail.com', port='587',
                      send='', send_pwd='', dest=''):
-        '''**Kwargs:
-        smtp='smtp.gmail.com' (default)
-        port='587' (default)
-        send='senders email address'
-        send_pwd='p@$$w0rd' (app password for send email account)
-        if you do not set this, it will seek a local env variable GMAIL_APP_PWD
-        dest='senders email address'
-        '''
         self.smtp = smtp
         self.port = port
         self.send = send

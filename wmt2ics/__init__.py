@@ -38,7 +38,6 @@ class Wmt2Ics:
             self.removeFile()
 
     def obtainData(self):
-        '''Terminal Interface to input Pay Period and schedule data'''
         self.schedule = []
         self.pay_period = input("ENTER PAY PERIOD -> ")
         print("PASTE SCHEDULE")
@@ -50,23 +49,20 @@ class Wmt2Ics:
         self.dates = self.schedule[1::3]
 
     def buildShiftCats(self):
-        '''Assigns shift_cats.data to shift_cats{}'''
         with open(self.cats_file, 'r') as f:
-            self.reader = csv.reader(f)
+            r = csv.reader(f)
             self.shift_cats = {row[0]: (row[1], int(row[2]), row[3],)
-                               for row in self.reader}
+                               for row in r}
 
     def addNewCategory(self):
-        '''add new shift, if pasted schedule not in shift_cats{}'''
         text = " Shift not found, enter start time (format: 00:00:00) -> "
-        for shift in self.shifts:
-            if shift not in self.shift_cats:
-                time = input("No " + shift + text)
+        for s in self.shifts:
+            if s not in self.shift_cats:
+                time = input("No " + s + text)
                 length = input("Enter Shift Length in Hours -> ")
                 name = input("Display Name for Calendar -> ")
                 with open(self.cats_file, "a+", newline='') as f:
-                    c = csv.writer(f)
-                    c.writerow([shift, time, length, name])
+                    csv.writer(f).writerow([s, time, length, name])
                 self.shift_cats.clear()
                 self.buildShiftCats()
 
@@ -78,7 +74,7 @@ class Wmt2Ics:
         for i in range(len(self.shifts)):
             if self.shifts[i] in self.shift_cats.keys():
                 self.name = self.shift_cats[self.shifts[i]][2]
-                self.date_time = self.dates[i] + " " + self.shift_cats[self.shifts[i]][0]
+                self.date_time = self.dates[i] + " " + self.shift_cats[self.shifts[i]][0]  # noqa: E501
                 self.date_time = datetime.strptime(self.date_time,
                                                    "%m/%d/%Y %H:%M:%S")
                 self.time = self.shift_cats[self.shifts[i]][0]
