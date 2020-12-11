@@ -74,5 +74,4 @@ C6,06:00:00,8,CIC Shift
 WX<6>,06:00:00,8,Admin
 A<6>,06:00:00,8,Annual Leave
 SL<6>,06:00:00,8,Sick Leave
-C14,14:00:00,8,CIC ShiftWX,06:00:00,8,Admin
-WX,06:00:00,8,Admin
+C14,14:00:00,8,CIC Shift
