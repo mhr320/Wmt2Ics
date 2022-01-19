@@ -18,7 +18,7 @@ setup(
     package_dir={'here': 'wmt2ics'},
     packages=find_packages(),
     package_data={'wmt2ics': ['shift_cats.data', 'wmtconfig.json']},
-    install_requires=['icalendar'],
+    install_requires=['icalendar','pyperclip'],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3",
