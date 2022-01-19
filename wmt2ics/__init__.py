@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from icalendar import Calendar, Event
 import os
 import csv
+import pyperclip
 
 
 class Wmt2Ics:
@@ -38,13 +39,12 @@ class Wmt2Ics:
             self.removeFile()
 
     def obtainData(self):
-        self.schedule = []
-        self.pay_period = input("ENTER PAY PERIOD -> ")
-        print("PASTE SCHEDULE")
-        while True:
-            self.schedule.append(input())
-            if len(self.schedule) == 42:
-                break
+        self.pay_period = input("ENTER PAY PERIOD # -> ")
+        self.raw_schedule = pyperclip.paste()
+        self.raw_schedule = self.raw_schedule.replace(" ", "")
+        self.raw_schedule = self.raw_schedule.replace("\n", " ")
+        self.raw_schedule = self.raw_schedule.replace("\t", " ")
+        self.schedule = self.raw_schedule.split(" ")
         self.shifts = self.schedule[2::3]
         self.dates = self.schedule[1::3]
 
