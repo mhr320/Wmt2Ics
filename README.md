@@ -2,7 +2,7 @@
 
 ## Description
 
-Using Web Schedules (wmtscheduler or wmt) **Views: My Schedule** as data, highlight and copy the pay period schedule and paste this data into **Terminal** window to be parsed and processed into a Internet Calendar Sharing file (.ics) which can then be imported into Apple iCal, Google Calendar, etc. 
+Using Web Schedules (wmtscheduler or wmt) **Views: My Schedule** as data, highlight and copy the pay period schedule and the module will paste this data automagically into **Terminal** window, after you enter the pay period number, into a Internet Calendar Sharing file (.ics) which can then be imported into Apple iCal, Google Calendar, etc. 
 
 ## Information
 
