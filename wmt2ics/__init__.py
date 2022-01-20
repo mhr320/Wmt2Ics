@@ -45,8 +45,11 @@ class Wmt2Ics:
         self.raw_schedule = self.raw_schedule.replace("\n", " ")
         self.raw_schedule = self.raw_schedule.replace("\t", " ")
         self.schedule = self.raw_schedule.split(" ")
-        self.shifts = self.schedule[2::3]
-        self.dates = self.schedule[1::3]
+        if len(self.schedule) != 42:
+            print("\nSomething you copied does not compute\n")
+        else:
+            self.shifts = self.schedule[2::3]
+            self.dates = self.schedule[1::3]
 
     def buildShiftCats(self):
         with open(self.cats_file, 'r') as f:
