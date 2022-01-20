@@ -2,7 +2,7 @@
 
 ## Description
 
-Using Web Schedules (wmtscheduler or wmt) **Views: My Schedule** as data, highlight and copy the pay period schedule. Once you start the script, enter the pay period number, the module will automagically paste the copied data into a python list for you. The information will then be parsed and converted into a **I**nternet **C**alendar **S**haring file (.ics) which can then be imported into Apple iCal, Google Calendar, etc. 
+Using Web Schedules (wmtscheduler or wmt) **Views: My Schedule** as data, highlight and copy the pay period schedule. Once you start the script, enter the pay period number, the module will automagically paste the copied data into a python list for you. The information will then be parsed and converted into an **I**nternet **C**alendar **S**haring file (.ics) which can then be imported into Apple iCal, Google Calendar, etc. 
 
 ## Information
 
