@@ -39,6 +39,7 @@ class Wmt2Ics:
             self.removeFile()
 
     def obtainData(self):
+        '''Will accept one (1) input and automatically pastes the copied data into variable for parsing.'''
         self.pay_period = input("ENTER PAY PERIOD # -> ")
         self.raw_schedule = pyperclip.paste()
         self.raw_schedule = self.raw_schedule.replace(" ", "")
