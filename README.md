@@ -22,7 +22,7 @@ wmt() # Default run_method='desktop'
 2. Save the file and **make it executable**.
 3. Navigate to [Web Scheduler](https://wmtscheduler.faa.gov/WMT_LogOn/), once logged in, select **Views**, then **My Schedule**.
 4. Copy the the pay period by highlighting and ```Ctrl+c``` to copy.
-5. Go to **Terminal** and run python3 yourfile.py
+5. Go to **Terminal** and run ```python3 yourfile.py```
    * Enter the pay period number - This will be part of your saved .ics filename
 6. Once completed you should find "Pay_Period_XX.ics" on your desktop. If you are using a Mac, you can open your iCal program and import the file.
    * You can also import to Google Calendar
