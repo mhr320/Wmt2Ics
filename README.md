@@ -15,6 +15,7 @@ This module takes advantage of python library [icalendar](https://pypi.org/proje
 1.  Create a python file:
 
 ```python3
+#!/usr/bin/env python3
 from wmt2ics import Wmt2Ics as wmt
 
 wmt() # Default run_method='desktop'
@@ -33,6 +34,7 @@ wmt() # Default run_method='desktop'
 1.  Create a python file:
 
 ```python3
+#!/usr/bin/env python3
 from wmt2ics import Wmt2Ics as wmt
 from wmt2ics.configemail import ConfigEmail as cfg
 
