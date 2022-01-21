@@ -3,6 +3,7 @@ from wmt2ics.configemail import ConfigEmail
 from datetime import datetime, timedelta
 from icalendar import Calendar, Event
 import os
+import sys
 import csv
 import pyperclip
 
@@ -40,7 +41,10 @@ class Wmt2Ics:
 
     def obtainData(self):
         '''Will accept one (1) input and automatically pastes the copied data into variable for parsing.'''
-        self.pay_period = input("ENTER PAY PERIOD # -> ")
+        if len(sys.argv) > 1:
+            self.pay_period = sys.argv[1]
+        else:
+            self.pay_period = input("ENTER PAY PERIOD # -> ")
         self.raw_schedule = pyperclip.paste()
         self.raw_schedule = self.raw_schedule.replace(" ", "")
         self.raw_schedule = self.raw_schedule.replace("\n", " ")
