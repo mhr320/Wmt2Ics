@@ -21,7 +21,7 @@ class SendEmail:
          sending...")
         self.subject = "Pay Period " + self.pay_period + " File!"
         self.msg = MIMEMultipart()
-        self.msg['From'] = "Web Scheduler to ICS"
+        self.msg['From'] = "Wmt2Ics"
         self.msg['TO'] = self.cfg["RECEIVER"]
         self.msg['Subject'] = self.subject
         self.body = "Remember to schedule yourself a pleasant day!\n"
