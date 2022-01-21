@@ -19,12 +19,12 @@ class SendEmail:
     def send_mail(self):
         print("Attching " + self.outfile.split('/')[-1] + " to Email,\
          sending...")
-        self.subject = "Pay Period " + self.pay_period + " File!"
+        self.subject = "Pay Period " + self.pay_period
         self.msg = MIMEMultipart()
         self.msg['From'] = "Wmt2Ics"
         self.msg['TO'] = self.cfg["RECEIVER"]
         self.msg['Subject'] = self.subject
-        self.body = "Remember to schedule yourself a pleasant day!\n"
+        self.body = "Here is your Internet Calendar Sharing file. Do with it as you please ;>)\nThanks for using Wmt2Ics!!!\n"
         self.msg.attach(MIMEText(self.body, 'plain'))
         self.attachment = open(self.outfile, 'rb')
         self.part = MIMEBase('application', 'octet-stream')
