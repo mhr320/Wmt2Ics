@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from icalendar import Calendar, Event
 import os
 import sys
+from sys import platform
 import csv
 import pyperclip
 
@@ -46,9 +47,17 @@ class Wmt2Ics:
         else:
             self.pay_period = input("ENTER PAY PERIOD # -> ")
         self.raw_schedule = pyperclip.paste()
-        self.raw_schedule = self.raw_schedule.replace(" ", "")
-        self.raw_schedule = self.raw_schedule.replace("\n", " ")
-        self.raw_schedule = self.raw_schedule.replace("\t", " ")
+        if platform == 'linux':
+            self.raw_schedule = self.raw_schedule.replace(" ", "")
+            self.raw_schedule = self.raw_schedule.replace("\n", " ")
+            self.raw_schedule = self.raw_schedule.replace("\t", " ")
+        elif platform == 'win32':
+            self.raw_schedule = self.raw_schedule.replace(" ", "")
+            self.raw_schedule = self.raw_schedule.replace("\n", " ")
+            self.raw_schedule = self.raw_schedule.replace("\t", " ")
+            self.raw_schedule = self.raw_schedule.replace("\r", " ")
+            self.raw_schedule = self.raw_schedule.replace("   ", " ")
+            self.raw_schedule = self.raw_schedule.replace("  ", " ")
         self.schedule = self.raw_schedule.split(" ")
         if len(self.schedule) != 42:
             print("\nSomething you copied does not compute\n")
