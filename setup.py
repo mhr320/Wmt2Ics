@@ -8,7 +8,7 @@ with open(here / 'README.md', 'r') as f:
 
 setup(
     name="Wmt2Ics",
-    version="0.0.18",
+    version="0.0.19",
     author="M. Holbert Roberts",
     author_email="mhr320@gmail.com",
     description="Converts wmt schedule Views:My Schedule to .ics file",
@@ -18,7 +18,7 @@ setup(
     package_dir={'here': 'wmt2ics'},
     packages=find_packages(),
     package_data={'wmt2ics': ['shift_cats.data', 'wmtconfig.json']},
-    install_requires=['icalendar','pyperclip'],
+    install_requires=['icalendar', 'pyperclip', 'email', 'smtplib', 'csv', 'json'],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3",
