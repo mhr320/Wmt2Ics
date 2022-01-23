@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 from icalendar import Calendar, Event
 import os
 import sys
-from sys import platform
 import csv
 import pyperclip
 
