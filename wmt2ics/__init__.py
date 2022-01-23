@@ -15,6 +15,8 @@ class Wmt2Ics:
         self.CFG = "wmtconfig.json"
         self.CATS = "shift_cats.data"
         self.FNAME = "Pay_Period_"
+        self.raw_schedule = pyperclip.paste().strip()
+        self.rem = ["\r", "\t", "\n", "  ", "   "]
         self.run_method = run_method
         self.base = os.path.dirname(__file__)
         self.config_file = os.path.abspath(os.path.join(self.base, self.CFG))
@@ -46,18 +48,8 @@ class Wmt2Ics:
             self.pay_period = sys.argv[1]
         else:
             self.pay_period = input("ENTER PAY PERIOD # -> ")
-        self.raw_schedule = pyperclip.paste()
-        if platform == 'linux':
-            self.raw_schedule = self.raw_schedule.replace(" ", "")
-            self.raw_schedule = self.raw_schedule.replace("\n", " ")
-            self.raw_schedule = self.raw_schedule.replace("\t", " ")
-        elif platform == 'win32':
-            self.raw_schedule = self.raw_schedule.replace(" ", "")
-            self.raw_schedule = self.raw_schedule.replace("\n", " ")
-            self.raw_schedule = self.raw_schedule.replace("\t", " ")
-            self.raw_schedule = self.raw_schedule.replace("\r", " ")
-            self.raw_schedule = self.raw_schedule.replace("   ", " ")
-            self.raw_schedule = self.raw_schedule.replace("  ", " ")
+        for i in self.rem:
+            self.raw_schedule = self.raw_schedule.replace(i, " ")
         self.schedule = self.raw_schedule.split(" ")
         if len(self.schedule) != 42:
             print("\nSomething you copied does not compute\n")
