@@ -17,14 +17,13 @@ class SendEmail:
         self.cfg = ConfigEmail().get_config()
 
     def send_mail(self):
-        print("Attching " + self.outfile.split('/')[-1] + " to Email,\
-         sending...")
+        print("Attaching " + self.outfile.split('/')[-1] + " to Email, sending...")
         self.subject = "Pay Period " + self.pay_period
         self.msg = MIMEMultipart()
         self.msg['From'] = "Wmt2Ics"
         self.msg['TO'] = self.cfg["RECEIVER"]
         self.msg['Subject'] = self.subject
-        self.body = "Here is your Internet Calendar Sharing file. Do with it as you please ;>)\nThanks for using Wmt2Ics!!!\n"
+        self.body = "Here is your ICS file.\nThanks for using Wmt2Ics!\n"
         self.msg.attach(MIMEText(self.body, 'plain'))
         self.attachment = open(self.outfile, 'rb')
         self.part = MIMEBase('application', 'octet-stream')
