@@ -1,5 +1,6 @@
 import os
 import json
+from sys import platform
 
 
 class ConfigEmail:
@@ -11,15 +12,24 @@ class ConfigEmail:
                                            "wmtconfig.json"))
 
     def get_config(self):
-        try:
-            with open(self.config_file, 'r') as f:
-                self.config = json.loads(f.read())
-                if self.config["APP_PWD"] == "":
-                    self.config["APP_PWD"] = os.environ.get('GMAIL_APP_PWD')
+        if platform == 'linux':
+            try:
+                with open(self.config_file, 'r') as f:
+                    self.config = json.loads(f.read())
+                    if self.config["APP_PWD"] == "":
+                        self.config["APP_PWD"] = os.environ.get('GMAIL_APP_PWD')
+                        return self.config
+            except ValueError:
+                print('No configuration found\n')
+                self.ask_config()
+        elif platform == 'win32':
+            try:
+                with open(self.config_file, 'r') as f:
+                    self.config = json.loads(f.read())
                     return self.config
-        except ValueError:
-            print('No configuration found')
-            self.ask_config()
+            except ValueError:
+                print('No Configuration Found\n')
+                self.ask_config()
 
     def ask_config(self):
         self.smtp = input("Enter smtp server -> ")
