@@ -14,14 +14,19 @@ class SendEmail:
     def __init__(self, pay_period, outfile):
         self.pay_period = pay_period
         self.outfile = outfile
-        self.cfg = ConfigEmail().get_config()
+        self.cfg = [ConfigEmail().get_config()]
+        self.TO = self.cfg[0]['RECEIVER']
+        self.FROM = self.cfg[0]['SENDER']
+        self.SMTP = self.cfg[0]['SMTPSERVER']
+        self.PORT = self.cfg[0]['SMTPPORT']
+        self.PWD = self.cfg[0]['APP_PWD']
 
     def send_mail(self):
         print("Attaching " + self.outfile.split('/')[-1] + " to Email, sending...")
         self.subject = "Pay Period " + self.pay_period
         self.msg = MIMEMultipart()
         self.msg['From'] = "Wmt2Ics"
-        self.msg['TO'] = self.cfg["RECEIVER"]
+        self.msg['TO'] = self.TO
         self.msg['Subject'] = self.subject
         self.body = "Here is your ICS file.\nThanks for using Wmt2Ics!\n"
         self.msg.attach(MIMEText(self.body, 'plain'))
@@ -33,11 +38,11 @@ class SendEmail:
             filename= pay_period_"+self.pay_period+".ics")
         self.msg.attach(self.part)
         self.text = self.msg.as_string()
-        self.server = smtplib.SMTP(self.cfg["SMTPSERVER"],
-                                   int(self.cfg["SMTPPORT"]))
+        self.server = smtplib.SMTP(self.SMTP,
+                                   int(self.PORT))
         self.server.starttls()
-        self.server.login(self.cfg["SENDER"], self.cfg["APP_PWD"])
-        self.server.sendmail(self.cfg["SENDER"], self.cfg["RECEIVER"],
+        self.server.login(self.FROM, self.PWD)
+        self.server.sendmail(self.FROM, self.TO,
                              self.text)
         self.server.quit()
         print("Email Sent Successfully!")
